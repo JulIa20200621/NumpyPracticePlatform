@@ -9,7 +9,9 @@ export function escapeHtml(s: string): string {
 }
 
 function inline(s: string): string {
-  return escapeHtml(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+  return escapeHtml(s)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
 
 export function renderMarkdown(src: string): string {

@@ -349,3 +349,109 @@ pre.code-block {
 .problem-table td:last-child {
   white-space: nowrap;
 }
+
+/* Task box under the question */
+.task {
+  margin: 1rem 0;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--accent);
+  background: var(--code-bg);
+  border-radius: 0 6px 6px 0;
+}
+.task p {
+  margin: 0.3rem 0;
+}
+.task pre.code-block {
+  background: var(--panel);
+  margin: 0.3rem 0;
+}
+.task-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 0.4rem;
+}
+
+/* Submit result */
+.verdict-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.verdict-count {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.stats {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0.6rem;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  min-width: 7.5rem;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.stat-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.cases {
+  list-style: none;
+  margin: 0 0 0.6rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.case {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.4rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+}
+.case:last-child {
+  border-bottom: none;
+}
+.case-icon {
+  font-weight: 700;
+  width: 1rem;
+  text-align: center;
+}
+.case-pass .case-icon {
+  color: var(--easy);
+}
+.case-fail .case-icon {
+  color: var(--hard);
+}
+.case-skipped {
+  color: var(--muted);
+}
+.case-body {
+  min-width: 0;
+  flex: 1;
+}
+.case-message {
+  margin: 0.3rem 0 0;
+  padding: 0.4rem 0.6rem;
+  background: var(--code-bg);
+  border-radius: 4px;
+  color: var(--hard);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.case-note {
+  font-size: 0.8rem;
+}
+.task code {
+  background: var(--panel);
+}

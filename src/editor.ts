@@ -1,3 +1,4 @@
+import { autocompletion } from "@codemirror/autocomplete";
 import { indentWithTab } from "@codemirror/commands";
 import { python } from "@codemirror/lang-python";
 import { indentUnit } from "@codemirror/language";
@@ -28,6 +29,8 @@ export function createEditor(parent: HTMLElement, opts: EditorOptions): EditorVi
       extensions: [
         runKeys,
         basicSetup,
+        // Completions only on Ctrl+Space: popping up on every keystroke is noisy for beginners.
+        autocompletion({ activateOnTyping: false }),
         keymap.of([indentWithTab]),
         python(),
         indentUnit.of("    "),
