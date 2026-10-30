@@ -9,7 +9,20 @@
     "tags": [
       "basics"
     ],
-    "prelude": false
+    "prelude": false,
+    "task": "numpy is **not** pre-imported in this exercise: that's your job.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`np` is defined",
+        "code": "assert \"np\" in dir(), \"`np` is not defined. Write `import numpy as np`.\""
+      },
+      {
+        "name": "`np` is the numpy module",
+        "code": "import numpy as _numpy\nassert np is _numpy, \"`np` is defined but it isn't numpy. Write `import numpy as np`.\""
+      }
+    ]
   },
   {
     "id": 2,
@@ -21,7 +34,20 @@
     "tags": [
       "basics"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Print the version first, then the configuration.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "The NumPy version is printed",
+        "code": "assert np.__version__ in _stdout, f\"Your output doesn't contain the version string {np.__version__!r}. Try `print(np.__version__)`.\""
+      },
+      {
+        "name": "The configuration is printed",
+        "code": "assert len(_stdout.strip().splitlines()) > 3, \"Only a line or two was printed. Did you call `np.show_config()`?\""
+      }
+    ]
   },
   {
     "id": 3,
@@ -33,32 +59,71 @@
     "tags": [
       "create"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the vector in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is a NumPy array",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array. Use `np.zeros`.\""
+      },
+      {
+        "name": "`Z` has shape (10,)",
+        "code": "assert Z.shape == (10,), f\"Z should have shape (10,), but it has shape {Z.shape}.\""
+      },
+      {
+        "name": "Every value is 0",
+        "code": "assert np.all(Z == 0), \"Z should contain only zeros.\""
+      }
+    ]
   },
   {
     "id": 4,
     "title": "How to find the memory size of any array",
     "question": "How to find the memory size of any array",
     "hint": "size, itemsize",
-    "solution": "Z = np.zeros((10,10))\nprint(\"%d bytes\" % (Z.size * Z.itemsize))\n\n# Simpler alternative\nprint(\"%d bytes\" % Z.nbytes)",
+    "solution": "size = Z.size * Z.itemsize\nprint(\"%d bytes\" % size)\n\n# Simpler alternative\nsize = Z.nbytes",
     "difficulty": 1,
     "tags": [
       "basics",
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Store its memory size **in bytes** in `size`.",
+    "given": "Z = np.zeros((10, 10))",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`size` is a number",
+        "code": "assert isinstance(size, (int, np.integer)), f\"size should be an integer number of bytes, got {type(size).__name__}.\""
+      },
+      {
+        "name": "`size` is the number of bytes",
+        "code": "assert size != Z.size, f\"{size} is the number of elements. Each element takes Z.itemsize = {Z.itemsize} bytes.\"\nassert size == Z.nbytes, f\"Expected {Z.nbytes} bytes, got {size}.\""
+      }
+    ]
   },
   {
     "id": 5,
     "title": "How to get the documentation of the numpy add function from the command line?",
     "question": "How to get the documentation of the numpy add function from the command line?",
     "hint": "np.info",
-    "solution": "!python -c \"import numpy; numpy.info(numpy.add)\"",
+    "solution": "np.info(np.add)",
     "difficulty": 1,
     "tags": [
       "basics"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "The original asks for a shell command. Here, **print** the documentation of `np.add` from Python instead.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "The documentation of np.add is printed",
+        "code": "assert \"element-wise\" in _stdout and \"add\" in _stdout, \"Your output doesn't look like np.add's documentation. Try `np.info(np.add)` or `help(np.add)`.\""
+      }
+    ]
   },
   {
     "id": 6,
@@ -71,7 +136,24 @@
       "create",
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the vector in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is a NumPy array of shape (10,)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (10,), f\"Z should have shape (10,), but it has shape {Z.shape}.\""
+      },
+      {
+        "name": "The fifth value is 1",
+        "code": "assert Z[4] == 1, (\"Z[4] should be 1. Indexing starts at 0, so the fifth value is Z[4].\"\n                   + (\" You set Z[5] (the sixth value).\" if Z[5] == 1 else \"\"))"
+      },
+      {
+        "name": "All other values are 0",
+        "code": "assert np.count_nonzero(Z) == 1, f\"Only the fifth value should be non-zero, but Z has {np.count_nonzero(Z)} non-zero values.\""
+      }
+    ]
   },
   {
     "id": 7,
@@ -83,7 +165,28 @@
     "tags": [
       "create"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the vector in `Z` (10 and 49 both included).",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is a NumPy array",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array. Use `np.arange`.\""
+      },
+      {
+        "name": "`Z` starts at 10",
+        "code": "assert Z.ndim == 1 and len(Z) > 0 and Z[0] == 10, f\"Z should start at 10, got {Z[:1]}.\""
+      },
+      {
+        "name": "`Z` ends at 49",
+        "code": "assert Z[-1] == 49, f\"Z should end at 49, but its last value is {Z[-1]}.\" + (\" `np.arange(start, stop)` excludes stop.\" if Z[-1] == 48 else \"\")"
+      },
+      {
+        "name": "`Z` has 40 consecutive values",
+        "code": "assert np.array_equal(Z, np.arange(10, 50)), \"Z should be 10, 11, 12, ..., 49.\""
+      }
+    ]
   },
   {
     "id": 8,
@@ -95,7 +198,20 @@
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Reverse it and store the result back in `Z`.",
+    "given": "Z = np.arange(50)",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` still has 50 elements",
+        "code": "assert np.shape(Z) == (50,), f\"Z should still have shape (50,), but it has shape {np.shape(Z)}.\""
+      },
+      {
+        "name": "`Z` is reversed",
+        "code": "assert np.array_equal(Z, np.arange(49, -1, -1)), f\"Z should go 49, 48, ..., 0. It starts with {np.asarray(Z)[:3]}. Try slicing with a step of -1.\""
+      }
+    ]
   },
   {
     "id": 9,
@@ -108,7 +224,24 @@
       "create",
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the matrix in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is a NumPy array",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\""
+      },
+      {
+        "name": "`Z` has shape (3, 3)",
+        "code": "assert Z.shape == (3, 3), f\"Z should have shape (3, 3), but it has shape {Z.shape}.\" + (\" Use `.reshape(3, 3)`.\" if Z.shape == (9,) else \"\")"
+      },
+      {
+        "name": "Values go 0..8 row by row",
+        "code": "assert np.array_equal(Z, np.arange(9).reshape(3, 3)), f\"Z should be [[0 1 2] [3 4 5] [6 7 8]], got\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 10,
@@ -120,7 +253,16 @@
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the indices in `nz`. Either the tuple returned by `np.nonzero` or a 1-D array of indices is accepted.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`nz` holds the indices of the non-zero elements",
+        "code": "_nz = np.asarray(nz[0] if isinstance(nz, tuple) else nz).ravel()\nassert not np.array_equal(_nz, [1, 2, 4]), \"nz holds the non-zero *values*. The task asks for their *indices* (positions).\"\nassert np.array_equal(_nz, [0, 1, 4]), f\"Expected indices [0 1 4], got {_nz}.\""
+      }
+    ]
   },
   {
     "id": 11,
@@ -133,7 +275,20 @@
       "create",
       "linear-algebra"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the matrix in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (3, 3)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (3, 3), f\"Z should have shape (3, 3), but it has shape {Z.shape}.\""
+      },
+      {
+        "name": "`Z` is the identity",
+        "code": "assert np.allclose(Z, np.eye(3)), f\"Z should have 1 on the diagonal and 0 elsewhere, got\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 12,
@@ -146,7 +301,20 @@
       "create",
       "random"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the array in `Z` (random values in [0, 1)).",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (3, 3, 3)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (3, 3, 3), f\"Z should have shape (3, 3, 3), but it has shape {Z.shape}. Pass the shape as a tuple: `np.random.random((3, 3, 3))`.\""
+      },
+      {
+        "name": "Values are random floats in [0, 1)",
+        "code": "assert np.issubdtype(Z.dtype, np.floating), f\"Z should hold floats, got dtype {Z.dtype}.\"\nassert np.all((Z >= 0) & (Z < 1)), \"Values should be in [0, 1).\"\nassert len(np.unique(Z)) > 1, \"All values are equal: that doesn't look random.\""
+      }
+    ]
   },
   {
     "id": 13,
@@ -159,7 +327,24 @@
       "random",
       "sort-argmax"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the array in `Z`, its minimum in `Zmin` and its maximum in `Zmax`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is a random 10x10 array",
+        "code": "assert isinstance(Z, np.ndarray) and Z.shape == (10, 10), f\"Z should be a NumPy array with shape (10, 10), got shape {np.shape(Z)}.\"\nassert len(np.unique(Z)) > 1, \"All values are equal: that doesn't look random.\""
+      },
+      {
+        "name": "`Zmin` is the minimum of Z",
+        "code": "assert np.ndim(Zmin) == 0, f\"Zmin should be a single number, got shape {np.shape(Zmin)}. Don't pass an axis.\"\nassert Zmin == Z.min(), f\"Zmin is {Zmin}, but the smallest value in Z is {Z.min()}.\""
+      },
+      {
+        "name": "`Zmax` is the maximum of Z",
+        "code": "assert np.ndim(Zmax) == 0, f\"Zmax should be a single number, got shape {np.shape(Zmax)}.\"\nassert Zmax == Z.max(), f\"Zmax is {Zmax}, but the largest value in Z is {Z.max()}.\""
+      }
+    ]
   },
   {
     "id": 14,
@@ -171,7 +356,20 @@
     "tags": [
       "random"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the vector in `Z` and its mean in `m`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is a random vector of size 30",
+        "code": "assert isinstance(Z, np.ndarray) and Z.shape == (30,), f\"Z should be a NumPy array with shape (30,), got shape {np.shape(Z)}.\"\nassert len(np.unique(Z)) > 1, \"All values are equal: that doesn't look random.\""
+      },
+      {
+        "name": "`m` is the mean of Z",
+        "code": "assert np.ndim(m) == 0, f\"m should be a single number, got shape {np.shape(m)}.\"\nassert np.isclose(m, Z.mean()), f\"m is {m}, but the mean of Z is {Z.mean()}.\" + (\" That's the sum.\" if np.isclose(m, Z.sum()) else \"\")"
+      }
+    ]
   },
   {
     "id": 15,
@@ -184,31 +382,74 @@
       "create",
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Make it 10x10 and store it in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (10, 10)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (10, 10), f\"Z should have shape (10, 10), got {Z.shape}.\""
+      },
+      {
+        "name": "The border is 1",
+        "code": "assert np.all(Z[0] == 1) and np.all(Z[-1] == 1) and np.all(Z[:, 0] == 1) and np.all(Z[:, -1] == 1), \"Every value on the border (first/last row and column) should be 1.\""
+      },
+      {
+        "name": "The inside is 0",
+        "code": "assert np.all(Z[1:-1, 1:-1] == 0), \"Every value not on the border should be 0. `Z[1:-1, 1:-1]` selects the inside.\""
+      }
+    ]
   },
   {
     "id": 16,
     "title": "How to add a border (filled with 0's) around an existing array?",
     "question": "How to add a border (filled with 0's) around an existing array?",
     "hint": "np.pad",
-    "solution": "Z = np.ones((5,5))\nZ = np.pad(Z, pad_width=1, mode='constant', constant_values=0)\nprint(Z)\n\n# Not a solution to this problem but good to know: using fancy indexing for in-place edit\nZ[:, [0, -1]] = 0\nZ[[0, -1], :] = 0\nprint(Z)",
+    "solution": "Z = np.pad(Z, pad_width=1, mode='constant', constant_values=0)\nprint(Z)",
     "difficulty": 1,
     "tags": [
       "create"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Add a border of zeros **around** it (the result is 7x7) and store the result back in `Z`.",
+    "given": "Z = np.ones((5, 5))",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (7, 7)",
+        "code": "assert np.shape(Z) == (7, 7), f\"Z should have shape (7, 7), but it has shape {np.shape(Z)}.\" + (\" The border goes around the array, not on top of it. Look at `np.pad`.\" if np.shape(Z) == (5, 5) else \"\")"
+      },
+      {
+        "name": "The border is 0 and the inside is the original array",
+        "code": "_expected = np.zeros((7, 7))\n_expected[1:-1, 1:-1] = 1\nassert np.array_equal(Z, _expected), f\"Expected a 5x5 block of ones surrounded by zeros, got\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 17,
     "title": "What is the result of the following expression?",
     "question": "What is the result of the following expression?\n```python\n0 * np.nan\nnp.nan == np.nan\nnp.inf > np.nan\nnp.nan - np.nan\nnp.nan in set([np.nan])\n0.3 == 3 * 0.1\n```",
     "hint": "NaN = not a number, inf = infinity",
-    "solution": "print(0 * np.nan)\nprint(np.nan == np.nan)\nprint(np.inf > np.nan)\nprint(np.nan - np.nan)\nprint(np.nan in set([np.nan]))\nprint(0.3 == 3 * 0.1)",
+    "solution": "answers = [\n    0 * np.nan,\n    np.nan == np.nan,\n    np.inf > np.nan,\n    np.nan - np.nan,\n    np.nan in set([np.nan]),\n    0.3 == 3 * 0.1,\n]\nprint(answers)",
     "difficulty": 1,
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Predict each result, then check your guess by running the expressions. Store the six results in a list `answers`, in order.\nUse `np.nan` for nan.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`answers` has 6 entries",
+        "code": "assert len(answers) == 6, f\"answers should have 6 entries, one per expression, got {len(answers)}.\""
+      },
+      {
+        "name": "Each answer is correct",
+        "code": "_expected = [np.nan, False, False, np.nan, True, False]\n_exprs = [\"0 * np.nan\", \"np.nan == np.nan\", \"np.inf > np.nan\", \"np.nan - np.nan\", \"np.nan in set([np.nan])\", \"0.3 == 3 * 0.1\"]\n\n\ndef _same(want, got):\n    if isinstance(want, float):\n        return isinstance(got, (float, np.floating)) and np.isnan(got)\n    return isinstance(got, (bool, np.bool_)) and got == want\n\n\n_wrong = [e for e, want, got in zip(_exprs, _expected, answers) if not _same(want, got)]\nassert not _wrong, \"Not quite: re-check \" + \", \".join(f\"`{e}`\" for e in _wrong) + \". Remember nan is not equal to anything, even itself.\""
+      }
+    ]
   },
   {
     "id": 18,
@@ -221,7 +462,20 @@
       "create",
       "linear-algebra"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the matrix in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (5, 5)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (5, 5), f\"Z should have shape (5, 5), got {Z.shape}.\""
+      },
+      {
+        "name": "1, 2, 3, 4 are just below the diagonal, everything else is 0",
+        "code": "_expected = np.diag(1 + np.arange(4), k=-1)\nassert not np.array_equal(Z, _expected.T), \"Your values are just *above* the diagonal. `np.diag(v, k)` puts them below when k is negative.\"\nassert np.array_equal(Z, _expected), f\"Expected\\n{_expected}\\ngot\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 19,
@@ -234,19 +488,49 @@
       "create",
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store it in `Z`, using 0 and 1, with `Z[0, 0] == 0`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (8, 8)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (8, 8), f\"Z should have shape (8, 8), got {Z.shape}.\""
+      },
+      {
+        "name": "Top-left corner is 0",
+        "code": "assert Z[0, 0] == 0, \"Z[0, 0] should be 0.\""
+      },
+      {
+        "name": "Neighbours always differ (checkerboard)",
+        "code": "_expected = np.indices((8, 8)).sum(axis=0) % 2\nassert np.array_equal(Z, _expected), f\"Every value should differ from its left/right/up/down neighbours, got\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 20,
     "title": "Consider a (6,7,8) shape array, what is the index (x,y,z) of the 100th element?",
     "question": "Consider a (6,7,8) shape array, what is the index (x,y,z) of the 100th element?",
     "hint": "np.unravel_index",
-    "solution": "print(np.unravel_index(99,(6,7,8)))",
+    "solution": "idx = np.unravel_index(99, (6, 7, 8))\nprint(idx)",
     "difficulty": 1,
     "tags": [
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the index in `idx` as a tuple `(x, y, z)`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`idx` has three coordinates",
+        "code": "assert len(idx) == 3, f\"idx should have 3 coordinates (x, y, z), got {len(idx)}.\""
+      },
+      {
+        "name": "`idx` is the index of the 100th element",
+        "code": "_idx = tuple(int(i) for i in idx)\nassert _idx != (1, 5, 4), \"That's the 101st element. The 100th element has flat index 99, since counting starts at 0.\"\nassert _idx == (1, 5, 3), f\"{_idx} is not the right index. Look at `np.unravel_index`.\""
+      }
+    ]
   },
   {
     "id": 21,
@@ -258,20 +542,58 @@
     "tags": [
       "create"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store it in `Z`, using 0 and 1, with `Z[0, 0] == 0`. Build it with `np.tile`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (8, 8)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (8, 8), f\"Z should have shape (8, 8), got {Z.shape}.\" + (\" `np.tile` repeats the 2x2 block, so you only need 4 copies in each direction.\" if Z.shape == (16, 16) else \"\")"
+      },
+      {
+        "name": "Top-left corner is 0",
+        "code": "assert Z[0, 0] == 0, \"Z[0, 0] should be 0.\""
+      },
+      {
+        "name": "Neighbours always differ (checkerboard)",
+        "code": "_expected = np.indices((8, 8)).sum(axis=0) % 2\nassert np.array_equal(Z, _expected), f\"Every value should differ from its left/right/up/down neighbours, got\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 22,
     "title": "Normalize a 5x5 random matrix",
     "question": "Normalize a 5x5 random matrix",
     "hint": "(x -mean)/std",
-    "solution": "Z = np.random.random((5,5))\nZ = (Z - np.mean (Z)) / (np.std (Z))\nprint(Z)",
+    "solution": "Z = (Z - np.mean(Z)) / (np.std(Z))\nprint(Z)",
     "difficulty": 1,
     "tags": [
       "random",
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Normalize it so its values have mean 0 and standard deviation 1, and store the result back in `Z`.",
+    "given": "np.random.seed(22)\nZ = np.random.random((5, 5))",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` still has shape (5, 5)",
+        "code": "assert np.shape(Z) == (5, 5), f\"Z should still have shape (5, 5), got {np.shape(Z)}.\""
+      },
+      {
+        "name": "The mean of Z is 0",
+        "code": "assert np.isclose(np.mean(Z), 0), f\"The mean of Z should be 0, got {np.mean(Z):.4f}. Subtract the mean.\""
+      },
+      {
+        "name": "The standard deviation of Z is 1",
+        "code": "assert np.isclose(np.std(Z), 1), f\"The standard deviation of Z should be 1, got {np.std(Z):.4f}. Divide by the standard deviation.\""
+      },
+      {
+        "name": "Z is the original matrix, shifted and scaled as a whole",
+        "code": "np.random.seed(22)\n_Z0 = np.random.random((5, 5))\nassert np.allclose(Z, (_Z0 - _Z0.mean()) / _Z0.std()), \"Use the mean and std of the whole matrix (no `axis`), not per row or column.\""
+      }
+    ]
   },
   {
     "id": 23,
@@ -283,116 +605,270 @@
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the dtype in `color`, with fields named `r`, `g`, `b`, `a`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`color` is a NumPy dtype",
+        "code": "assert isinstance(color, np.dtype), f\"color is a {type(color).__name__}. Wrap your field list in `np.dtype(...)`.\""
+      },
+      {
+        "name": "Fields are r, g, b, a",
+        "code": "assert color.names == (\"r\", \"g\", \"b\", \"a\"), f\"color should have fields ('r', 'g', 'b', 'a'), got {color.names}.\""
+      },
+      {
+        "name": "Each field is an unsigned byte",
+        "code": "_bad = [n for n in color.names if color.fields[n][0] != np.uint8]\nassert not _bad, f\"Fields {_bad} are not unsigned bytes. Use `np.ubyte` (or `np.uint8`), which holds 0..255.\""
+      }
+    ]
   },
   {
     "id": 24,
     "title": "Multiply a 5x3 matrix by a 3x2 matrix (real matrix product)",
     "question": "Multiply a 5x3 matrix by a 3x2 matrix (real matrix product)",
     "hint": "",
-    "solution": "Z = np.matmul(np.ones((5, 3)), np.ones((3, 2)))\nprint(Z)\n\n# Alternative solution, in Python 3.5 and above\nZ = np.ones((5,3)) @ np.ones((3,2))\nprint(Z)",
+    "solution": "Z = np.matmul(A, B)\nprint(Z)\n\n# Alternative solution, in Python 3.5 and above\nZ = A @ B\nprint(Z)",
     "difficulty": 1,
     "tags": [
       "linear-algebra"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`A` (5x3) and `B` (3x2) are given below. Store their matrix product in `Z`.",
+    "given": "A = np.arange(15).reshape(5, 3)\nB = np.arange(6).reshape(3, 2)",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (5, 2)",
+        "code": "assert np.shape(Z) == (5, 2), f\"Z should have shape (5, 2), got {np.shape(Z)}.\" + (\" That's (A @ B).T: check the order of the factors.\" if np.shape(Z) == (2, 5) else \"\")"
+      },
+      {
+        "name": "`Z` is the matrix product A @ B",
+        "code": "assert np.array_equal(Z, A @ B), f\"Z is not the matrix product. `*` multiplies element by element; use `@` or `np.matmul`. Expected\\n{A @ B}\\ngot\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 25,
     "title": "Given a 1D array, negate all elements which are between 3 and 8, in place.",
     "question": "Given a 1D array, negate all elements which are between 3 and 8, in place.",
     "hint": ">, <",
-    "solution": "# Author: Evgeni Burovski\n\nZ = np.arange(11)\nZ[(3 < Z) & (Z < 8)] *= -1\nprint(Z)",
+    "solution": "# Author: Evgeni Burovski\n\nZ[(3 < Z) & (Z < 8)] *= -1\nprint(Z)",
     "difficulty": 1,
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Negate the elements strictly between 3 and 8 **in place**: modify `Z` itself, don't create a new array.",
+    "given": "Z = np.arange(11)",
+    "setup": "_Z_id = id(Z)",
+    "cases": [
+      {
+        "name": "Elements strictly between 3 and 8 are negated",
+        "code": "_expected = np.array([0, 1, 2, 3, -4, -5, -6, -7, 8, 9, 10])\nassert np.array_equal(Z, _expected), f\"Expected {_expected}, got {Z}.\" + (\" 'Strictly between' excludes 3 and 8 themselves.\" if np.array_equal(np.abs(Z), np.arange(11)) and Z[3] == -3 else \"\")"
+      },
+      {
+        "name": "`Z` was modified in place",
+        "code": "assert id(Z) == _Z_id, \"Z is a new array. Modify the original with boolean indexing, e.g. `Z[mask] *= -1`.\""
+      }
+    ]
   },
   {
     "id": 26,
     "title": "What is the output of the following script?",
     "question": "What is the output of the following script?\n```python\n# Author: Jake VanderPlas\n\nprint(sum(range(5),-1))\nfrom numpy import *\nprint(sum(range(5),-1))\n```",
     "hint": "np.sum",
-    "solution": "# Author: Jake VanderPlas\n\nprint(sum(range(5),-1))\nfrom numpy import *\nprint(sum(range(5),-1))",
+    "solution": "# Author: Jake VanderPlas\n\nprint(sum(range(5),-1))\nfrom numpy import *\nprint(sum(range(5),-1))\n\nanswers = [9, 10]",
     "difficulty": 1,
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "The script prints two numbers. Predict them, run it to check, and store them in a list `answers`: `[first, second]`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`answers` has 2 entries",
+        "code": "assert len(answers) == 2, f\"answers should have 2 entries, got {len(answers)}.\""
+      },
+      {
+        "name": "The first number is right",
+        "code": "assert answers[0] == 9, \"Not quite: the first `sum` is Python's built-in, where the second argument is a start value.\""
+      },
+      {
+        "name": "The second number is right",
+        "code": "assert answers[1] == 10, \"Not quite: after `from numpy import *`, `sum` is `np.sum`, where the second argument is `axis`.\""
+      }
+    ]
   },
   {
     "id": 27,
     "title": "Consider an integer vector Z, which of these expressions are legal?",
     "question": "Consider an integer vector Z, which of these expressions are legal?\n```python\nZ**Z\n2 << Z >> 2\nZ <- Z\n1j*Z\nZ/1/1\nZ<Z>Z\n```",
     "hint": "No hints provided...",
-    "solution": "Z**Z\n2 << Z >> 2\nZ <- Z\n1j*Z\nZ/1/1\nZ<Z>Z",
+    "solution": "legal = []\nfor expr in [\"Z**Z\", \"2 << Z >> 2\", \"Z <- Z\", \"1j*Z\", \"Z/1/1\", \"Z<Z>Z\"]:\n    try:\n        eval(expr)\n        legal.append(True)\n    except Exception:\n        legal.append(False)\nprint(legal)",
     "difficulty": 1,
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Store six booleans in a list `legal`, one per expression in order: `True` if it runs without error.",
+    "given": "Z = np.arange(1, 6)",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`legal` has 6 entries",
+        "code": "assert len(legal) == 6, f\"legal should have 6 entries, got {len(legal)}.\""
+      },
+      {
+        "name": "Each entry is right",
+        "code": "_exprs = [\"Z**Z\", \"2 << Z >> 2\", \"Z <- Z\", \"1j*Z\", \"Z/1/1\", \"Z<Z>Z\"]\n_expected = [True, True, True, True, True, False]\n_wrong = [e for e, want, got in zip(_exprs, _expected, legal) if bool(got) != want]\nassert not _wrong, \"Re-check \" + \", \".join(f\"`{e}`\" for e in _wrong) + \". Try running each one.\""
+      }
+    ]
   },
   {
     "id": 28,
     "title": "What are the result of the following expressions?",
     "question": "What are the result of the following expressions?\n```python\nnp.array(0) / np.array(0)\nnp.array(0) // np.array(0)\nnp.array([np.nan]).astype(int).astype(float)\n```",
     "hint": "No hints provided...",
-    "solution": "print(np.array(0) / np.array(0))\nprint(np.array(0) // np.array(0))\nprint(np.array([np.nan]).astype(int).astype(float))",
+    "solution": "answers = [\n    np.array(0) / np.array(0),\n    np.array(0) // np.array(0),\n    np.array([np.nan]).astype(int).astype(float),\n]\nprint(answers)",
     "difficulty": 1,
     "tags": [
       "dtype",
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the three results in a list `answers`, in order.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`answers` has 3 entries",
+        "code": "assert len(answers) == 3, f\"answers should have 3 entries, got {len(answers)}.\""
+      },
+      {
+        "name": "0 / 0 is right",
+        "code": "assert np.isnan(answers[0]), f\"`np.array(0) / np.array(0)` is not {answers[0]!r}. Try running it.\""
+      },
+      {
+        "name": "0 // 0 is right",
+        "code": "assert not np.isnan(answers[1]) and answers[1] == 0, f\"`np.array(0) // np.array(0)` is not {answers[1]!r}. Integer division can't produce nan.\""
+      },
+      {
+        "name": "nan -> int -> float is right",
+        "code": "_want = np.array([np.nan]).astype(int).astype(float)\nassert np.array_equal(np.ravel(answers[2]), _want), f\"Casting nan to int is undefined, so you get a meaningless value: here {_want}. Store the result of the expression.\""
+      }
+    ]
   },
   {
     "id": 29,
     "title": "How to round away from zero a float array ?",
     "question": "How to round away from zero a float array ?",
     "hint": "np.uniform, np.copysign, np.ceil, np.abs, np.where",
-    "solution": "# Author: Charles R Harris\n\nZ = np.random.uniform(-10,+10,10)\nprint(np.copysign(np.ceil(np.abs(Z)), Z))\n\n# More readable but less efficient\nprint(np.where(Z>0, np.ceil(Z), np.floor(Z)))",
+    "solution": "# Author: Charles R Harris\n\nR = np.copysign(np.ceil(np.abs(Z)), Z)\nprint(R)\n\n# More readable but less efficient\nR = np.where(Z > 0, np.ceil(Z), np.floor(Z))\nprint(R)",
     "difficulty": 1,
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Round every value away from zero (2.1 → 3, -2.1 → -3) and store the result in `R`.",
+    "given": "np.random.seed(29)\nZ = np.random.uniform(-10, +10, 10)",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`R` has the same shape as Z",
+        "code": "assert np.shape(R) == Z.shape, f\"R should have shape {Z.shape}, got {np.shape(R)}.\""
+      },
+      {
+        "name": "Positive values are rounded up",
+        "code": "_pos = Z > 0\nassert np.array_equal(np.asarray(R)[_pos], np.ceil(Z[_pos])), \"Positive values should be rounded up (towards +inf), like `np.ceil`.\""
+      },
+      {
+        "name": "Negative values are rounded down",
+        "code": "_neg = Z < 0\nassert np.array_equal(np.asarray(R)[_neg], np.floor(Z[_neg])), \"Negative values should be rounded down (towards -inf), like `np.floor`.\""
+      }
+    ]
   },
   {
     "id": 30,
     "title": "How to find common values between two arrays?",
     "question": "How to find common values between two arrays?",
     "hint": "np.intersect1d",
-    "solution": "Z1 = np.random.randint(0,10,10)\nZ2 = np.random.randint(0,10,10)\nprint(np.intersect1d(Z1,Z2))",
+    "solution": "C = np.intersect1d(Z1, Z2)\nprint(C)",
     "difficulty": 1,
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z1` and `Z2` are given below. Store their common values in `C`, each value once, sorted.",
+    "given": "np.random.seed(30)\nZ1 = np.random.randint(0, 10, 10)\nZ2 = np.random.randint(0, 10, 10)",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`C` contains each value once, sorted",
+        "code": "_C = np.asarray(C)\nassert len(np.unique(_C)) == len(_C), f\"C contains duplicates: {_C}. Each common value should appear once.\"\nassert np.array_equal(_C, np.sort(_C)), f\"C should be sorted, got {_C}.\""
+      },
+      {
+        "name": "`C` contains exactly the common values",
+        "code": "_expected = np.intersect1d(Z1, Z2)\n_extra = np.setdiff1d(_C, _expected)\nassert len(_extra) == 0, f\"These values are not in both arrays: {_extra}.\"\nassert np.array_equal(_C, _expected), f\"Some common values are missing: {np.setdiff1d(_expected, _C)}.\""
+      }
+    ]
   },
   {
     "id": 31,
     "title": "How to ignore all numpy warnings (not recommended)?",
     "question": "How to ignore all numpy warnings (not recommended)?",
     "hint": "np.seterr, np.errstate",
-    "solution": "# Suicide mode on\ndefaults = np.seterr(all=\"ignore\")\nZ = np.ones(1) / 0\n\n# Back to sanity\n_ = np.seterr(**defaults)\n\n# Equivalently with a context manager\nwith np.errstate(all=\"ignore\"):\n    np.arange(3) / 0",
+    "solution": "with np.errstate(all=\"ignore\"):\n    Z = np.ones(1) / 0\n\n# Also possible, but remember to restore the old settings:\n# defaults = np.seterr(all=\"ignore\")\n# Z = np.ones(1) / 0\n# _ = np.seterr(**defaults)",
     "difficulty": 1,
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Compute `Z = np.ones(1) / 0` **without** a RuntimeWarning being printed.\nUse `np.errstate`, so warnings are switched back on afterwards.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is [inf]",
+        "code": "assert np.array_equal(Z, [np.inf]), f\"Z should be np.ones(1) / 0, i.e. [inf], got {Z}.\""
+      },
+      {
+        "name": "No warning was printed",
+        "code": "assert \"Warning\" not in _stdout, \"A warning was printed. Wrap the division in `with np.errstate(all=\\\"ignore\\\"):`.\""
+      },
+      {
+        "name": "Warnings are switched back on afterwards",
+        "code": "assert np.geterr()[\"divide\"] != \"ignore\", \"Division warnings are still turned off for all later code. Use `with np.errstate(...)`, which only applies inside the `with` block.\""
+      }
+    ]
   },
   {
     "id": 32,
     "title": "Is the following expressions true?",
     "question": "Is the following expressions true?\n```python\nnp.sqrt(-1) == np.emath.sqrt(-1)\n```",
     "hint": "imaginary number",
-    "solution": "np.sqrt(-1) == np.emath.sqrt(-1)",
+    "solution": "print(np.sqrt(-1), np.emath.sqrt(-1))\nanswer = False",
     "difficulty": 1,
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store your answer in `answer` as `True` or `False`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`answer` is a boolean",
+        "code": "assert isinstance(answer, (bool, np.bool_)), f\"answer should be True or False, got {answer!r}.\""
+      },
+      {
+        "name": "`answer` is right",
+        "code": "assert answer == False, \"Print both sides: `np.sqrt(-1)` gives nan (with a warning), while `np.emath.sqrt(-1)` gives 1j.\"  # noqa: E712"
+      }
+    ]
   },
   {
     "id": 33,
@@ -404,7 +880,28 @@
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store them as `np.datetime64` days in `yesterday`, `today` and `tomorrow`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "All three are np.datetime64",
+        "code": "_bad = [n for n in (\"yesterday\", \"today\", \"tomorrow\") if not isinstance(eval(n), np.datetime64)]\nassert not _bad, f\"{', '.join(_bad)} should be np.datetime64 values. Start from `np.datetime64('today')`.\""
+      },
+      {
+        "name": "`today` is today",
+        "code": "_today = np.datetime64('today', 'D')\nassert today == _today, f\"today is {today}, expected {_today}.\""
+      },
+      {
+        "name": "`yesterday` is one day before today",
+        "code": "assert yesterday == _today - np.timedelta64(1, 'D'), f\"yesterday is {yesterday}, expected {_today - np.timedelta64(1, 'D')}.\""
+      },
+      {
+        "name": "`tomorrow` is one day after today",
+        "code": "assert tomorrow == _today + np.timedelta64(1, 'D'), f\"tomorrow is {tomorrow}, expected {_today + np.timedelta64(1, 'D')}.\""
+      }
+    ]
   },
   {
     "id": 34,
@@ -416,32 +913,71 @@
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the dates in `Z` (an array of `datetime64[D]`).",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` holds dates (datetime64[D])",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.dtype == np.dtype('datetime64[D]'), f\"Z should have dtype datetime64[D] (days), got {Z.dtype}. Pass `dtype='datetime64[D]'`.\""
+      },
+      {
+        "name": "`Z` has all 31 days of July 2016",
+        "code": "assert len(Z) == 31, f\"July has 31 days, but Z has {len(Z)}.\" + (\" The stop of `np.arange` is excluded: stop at '2016-08' (or '2016-08-01').\" if len(Z) == 30 else \"\")\nassert Z[0] == np.datetime64('2016-07-01') and Z[-1] == np.datetime64('2016-07-31'), f\"Z should go from 2016-07-01 to 2016-07-31, got {Z[0]} to {Z[-1]}.\""
+      }
+    ]
   },
   {
     "id": 35,
     "title": "How to compute ((A+B)*(-A/2)) in place (without copy)?",
     "question": "How to compute ((A+B)*(-A/2)) in place (without copy)?",
     "hint": "np.add(out=), np.negative(out=), np.multiply(out=), np.divide(out=)",
-    "solution": "A = np.ones(3)*1\nB = np.ones(3)*2\nnp.add(A,B,out=B)\nnp.divide(A,2,out=A)\nnp.negative(A,out=A)\nnp.multiply(A,B,out=A)",
+    "solution": "np.add(A,B,out=B)\nnp.divide(A,2,out=A)\nnp.negative(A,out=A)\nnp.multiply(A,B,out=A)",
     "difficulty": 2,
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`A` and `B` are given below. Compute `((A+B)*(-A/2))` and store the result in `A` itself, without creating new arrays\n(use the `out=` argument of `np.add`, `np.divide`, ...).",
+    "given": "A = np.ones(3)*1\nB = np.ones(3)*2",
+    "setup": "_A_id = id(A)",
+    "cases": [
+      {
+        "name": "`A` holds ((A+B)*(-A/2))",
+        "code": "assert np.allclose(A, -1.5), f\"A should be [-1.5 -1.5 -1.5], got {A}.\""
+      },
+      {
+        "name": "`A` was modified in place",
+        "code": "assert id(A) == _A_id, \"A is a new array. Write the result into the original with `np.multiply(..., out=A)`.\""
+      }
+    ]
   },
   {
     "id": 36,
     "title": "Extract the integer part of a random array of positive numbers using 4 different methods",
     "question": "Extract the integer part of a random array of positive numbers using 4 different methods",
     "hint": "%, np.floor, astype, np.trunc",
-    "solution": "Z = np.random.uniform(0,10,10)\n\nprint(Z - Z%1)\nprint(Z // 1)\nprint(np.floor(Z))\nprint(Z.astype(int))\nprint(np.trunc(Z))",
+    "solution": "parts = [\n    Z - Z % 1,\n    Z // 1,\n    np.floor(Z),\n    Z.astype(int),\n    np.trunc(Z),\n]\nfor p in parts:\n    print(p)",
     "difficulty": 2,
     "tags": [
       "dtype",
       "random"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "`Z` is given below. Store four (or more) different ways of getting its integer part in a list `parts`, e.g. `parts = [Z // 1, ...]`.",
+    "given": "np.random.seed(36)\nZ = np.random.uniform(0, 10, 10)",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`parts` has at least 4 entries",
+        "code": "assert len(parts) >= 4, f\"parts should have at least 4 entries, got {len(parts)}.\""
+      },
+      {
+        "name": "Every entry is the integer part of Z",
+        "code": "_bad = [i for i, p in enumerate(parts) if np.shape(p) != Z.shape or not np.allclose(p, np.trunc(Z))]\nassert not _bad, f\"parts[{_bad[0]}] is not the integer part of Z. Expected {np.trunc(Z)}, got {parts[_bad[0]]}.\" if _bad else \"\""
+      }
+    ]
   },
   {
     "id": 37,
@@ -454,19 +990,45 @@
       "create",
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Every row should be `[0, 1, 2, 3, 4]`. Store the matrix in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (5, 5)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (5, 5), f\"Z should have shape (5, 5), got {Z.shape}.\""
+      },
+      {
+        "name": "Every row is 0, 1, 2, 3, 4",
+        "code": "_expected = np.tile(np.arange(5), (5, 1))\nassert not np.array_equal(Z, _expected.T), \"Your *columns* are 0..4. Each *row* should be [0 1 2 3 4].\"\nassert np.array_equal(Z, _expected), f\"Every row should be [0 1 2 3 4], got\\n{Z}\""
+      }
+    ]
   },
   {
     "id": 38,
     "title": "Consider a generator function that generates 10 integers and use it to build an array",
     "question": "Consider a generator function that generates 10 integers and use it to build an array",
     "hint": "np.fromiter",
-    "solution": "def generate():\n    for x in range(10):\n        yield x\nZ = np.fromiter(generate(),dtype=float,count=-1)\nprint(Z)",
+    "solution": "Z = np.fromiter(generate(),dtype=float,count=-1)\nprint(Z)",
     "difficulty": 1,
     "tags": [
       "create"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "The generator function `generate` is given below. Use it to build an array and store it in `Z`.",
+    "given": "def generate():\n    for x in range(10):\n        yield x",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` is a 1-D array of 10 values",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (10,), f\"Z should have shape (10,), got {Z.shape}.\" + (\" `np.array(generator)` doesn't iterate the generator: it wraps it in a 0-d object array. Try `np.fromiter`.\" if Z.shape == () else \"\")"
+      },
+      {
+        "name": "`Z` holds the generated values 0..9",
+        "code": "assert np.array_equal(Z, np.arange(10)), f\"Z should hold 0, 1, ..., 9, got {Z}.\""
+      }
+    ]
   },
   {
     "id": 39,
@@ -478,7 +1040,24 @@
     "tags": [
       "create"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "The values should be evenly spaced: 1/11, 2/11, ..., 10/11. Store the vector in `Z`.",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (10,)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (10,), f\"Z should have shape (10,), got {Z.shape}.\""
+      },
+      {
+        "name": "0 and 1 are excluded",
+        "code": "assert np.all((Z > 0) & (Z < 1)), f\"Every value should be strictly between 0 and 1. Z goes from {Z[0]} to {Z[-1]}.\""
+      },
+      {
+        "name": "Values are evenly spaced 1/11 .. 10/11",
+        "code": "assert np.allclose(Z, np.arange(1, 11) / 11), f\"Expected 1/11, 2/11, ..., 10/11, got {Z}. One way: take 12 evenly spaced points from 0 to 1 and drop both ends.\""
+      }
+    ]
   },
   {
     "id": 40,
@@ -491,7 +1070,24 @@
       "random",
       "sort-argmax"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "Store the sorted vector in `Z` (smallest first).",
+    "given": "",
+    "setup": "",
+    "cases": [
+      {
+        "name": "`Z` has shape (10,)",
+        "code": "assert isinstance(Z, np.ndarray), f\"Z is a {type(Z).__name__}, not a NumPy array.\"\nassert Z.shape == (10,), f\"Z should have shape (10,), got {Z.shape}.\""
+      },
+      {
+        "name": "Values are random",
+        "code": "assert np.issubdtype(Z.dtype, np.floating) and not np.allclose(np.diff(Z), np.diff(Z)[0]), \"Z doesn't look random. Start from `np.random.random(10)`.\""
+      },
+      {
+        "name": "`Z` is sorted, smallest first",
+        "code": "assert np.all(np.diff(Z) >= 0), f\"Z is not sorted in increasing order: {Z}.\" + (\" It's in decreasing order.\" if np.all(np.diff(Z) <= 0) else \" Use `Z.sort()` or `np.sort(Z)`.\")"
+      }
+    ]
   },
   {
     "id": 41,
@@ -503,7 +1099,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 42,
@@ -516,7 +1116,11 @@
       "random",
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 43,
@@ -528,7 +1132,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 44,
@@ -541,7 +1149,11 @@
       "random",
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 45,
@@ -554,7 +1166,11 @@
       "random",
       "sort-argmax"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 46,
@@ -567,7 +1183,11 @@
       "dtype",
       "create"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 47,
@@ -579,7 +1199,11 @@
     "tags": [
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 48,
@@ -591,7 +1215,11 @@
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 49,
@@ -603,7 +1231,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 50,
@@ -615,7 +1247,11 @@
     "tags": [
       "sort-argmax"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 51,
@@ -627,7 +1263,11 @@
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 52,
@@ -640,7 +1280,11 @@
       "random",
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 53,
@@ -652,7 +1296,11 @@
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 54,
@@ -664,7 +1312,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 55,
@@ -676,7 +1328,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 56,
@@ -689,7 +1345,11 @@
       "create",
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 57,
@@ -702,7 +1362,11 @@
       "random",
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 58,
@@ -715,7 +1379,11 @@
       "axis",
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 59,
@@ -728,7 +1396,11 @@
       "sort-argmax",
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 60,
@@ -740,7 +1412,11 @@
     "tags": [
       "axis"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 61,
@@ -752,7 +1428,11 @@
     "tags": [
       "sort-argmax"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 62,
@@ -764,7 +1444,11 @@
     "tags": [
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 63,
@@ -776,7 +1460,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 64,
@@ -788,7 +1476,11 @@
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 65,
@@ -800,7 +1492,11 @@
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 66,
@@ -813,7 +1509,11 @@
       "dtype",
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 67,
@@ -826,7 +1526,11 @@
       "axis",
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 68,
@@ -838,7 +1542,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 69,
@@ -850,7 +1558,11 @@
     "tags": [
       "linear-algebra"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 70,
@@ -862,7 +1574,11 @@
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 71,
@@ -874,7 +1590,11 @@
     "tags": [
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 72,
@@ -886,7 +1606,11 @@
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 73,
@@ -899,7 +1623,11 @@
       "shape",
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 74,
@@ -911,7 +1639,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 75,
@@ -923,7 +1655,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 76,
@@ -935,7 +1671,11 @@
     "tags": [
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 77,
@@ -947,7 +1687,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 78,
@@ -959,7 +1703,11 @@
     "tags": [
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 79,
@@ -971,7 +1719,11 @@
     "tags": [
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 80,
@@ -983,7 +1735,11 @@
     "tags": [
       "index-slice"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 81,
@@ -995,7 +1751,11 @@
     "tags": [
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 82,
@@ -1007,7 +1767,11 @@
     "tags": [
       "linear-algebra"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 83,
@@ -1019,7 +1783,11 @@
     "tags": [
       "sort-argmax"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 84,
@@ -1031,7 +1799,11 @@
     "tags": [
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 85,
@@ -1043,7 +1815,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 86,
@@ -1055,7 +1831,11 @@
     "tags": [
       "linear-algebra"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 87,
@@ -1068,7 +1848,11 @@
       "shape",
       "axis"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 88,
@@ -1080,7 +1864,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 89,
@@ -1092,7 +1880,11 @@
     "tags": [
       "sort-argmax"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 90,
@@ -1104,7 +1896,11 @@
     "tags": [
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 91,
@@ -1116,7 +1912,11 @@
     "tags": [
       "dtype"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 92,
@@ -1128,7 +1928,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 93,
@@ -1141,7 +1945,11 @@
       "broadcasting",
       "axis"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 94,
@@ -1153,7 +1961,11 @@
     "tags": [
       "axis"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 95,
@@ -1166,7 +1978,11 @@
       "dtype",
       "broadcasting"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 96,
@@ -1178,7 +1994,11 @@
     "tags": [
       "shape"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 97,
@@ -1190,7 +2010,11 @@
     "tags": [
       "linear-algebra"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 98,
@@ -1202,7 +2026,11 @@
     "tags": [
       "misc"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 99,
@@ -1214,7 +2042,11 @@
     "tags": [
       "axis"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   },
   {
     "id": 100,
@@ -1226,6 +2058,10 @@
     "tags": [
       "random"
     ],
-    "prelude": true
+    "prelude": true,
+    "task": "",
+    "given": "",
+    "setup": "",
+    "cases": []
   }
 ]
