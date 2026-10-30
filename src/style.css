@@ -1,0 +1,170 @@
+:root {
+  --bg: #f7f8fa;
+  --panel: #ffffff;
+  --text: #1f2328;
+  --muted: #656d76;
+  --border: #d8dee4;
+  --accent: #2f6feb;
+  --code-bg: #eef1f4;
+  --easy: #1a7f37;
+  --medium: #b7791f;
+  --hard: #cf222e;
+  --row-hover: #f0f3f6;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --panel: #161b22;
+  --text: #e6edf3;
+  --muted: #8d96a0;
+  --border: #30363d;
+  --accent: #4c8dff;
+  --code-bg: #1f2630;
+  --easy: #3fb950;
+  --medium: #d29922;
+  --hard: #f85149;
+  --row-hover: #1c2129;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+code,
+pre {
+  font-family: "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+code {
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+pre.code-block {
+  background: var(--code-bg);
+  padding: 0.75em 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+#app {
+  flex: 1;
+  width: 100%;
+}
+
+.footer {
+  padding: 0.8rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.list-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+}
+
+.problem-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.problem-table th,
+.problem-table td {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.problem-table th {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.problem-table tbody tr:hover {
+  background: var(--row-hover);
+}
+.problem-table td.num {
+  color: var(--muted);
+  width: 3rem;
+}
+
+.diff {
+  font-weight: 600;
+  font-size: 0.9em;
+}
+.diff-1 {
+  color: var(--easy);
+}
+.diff-2 {
+  color: var(--medium);
+}
+.diff-3 {
+  color: var(--hard);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 0.05rem 0.5rem;
+  margin: 0 0.3rem 0.2rem 0;
+  border-radius: 999px;
+  background: var(--code-bg);
+  color: var(--muted);
+}
+
+.problem-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+}
+
+.notice {
+  padding: 2rem;
+  text-align: center;
+}
