@@ -70,8 +70,8 @@ def _truncate(s):
     return s if len(s) <= MAX_OUTPUT else s[:MAX_OUTPUT] + "\n… (truncated)"
 
 
-def execute(code, test=None, setup=""):
-    """Run `setup` + student `code`, then `test` (if given) in the same namespace.
+def execute(code, test=None, setup="", prelude=True):
+    """Run the prelude (`import numpy as np`, unless prelude=False) + `setup` + student `code`, then `test` (if given) in the same namespace.
 
     Returns a dict:
       stdout   captured print output
@@ -86,7 +86,8 @@ def execute(code, test=None, setup=""):
     _register_source(USER_FILE, code)
 
     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
-        exec(PRELUDE, ns)
+        if prelude:
+            exec(PRELUDE, ns)
         if setup:
             exec(compile(setup, "<setup>", "exec"), ns)
         try:
@@ -117,5 +118,5 @@ def execute(code, test=None, setup=""):
     return result
 
 
-def execute_json(code, test=None, setup=""):
-    return json.dumps(execute(code, test, setup))
+def execute_json(code, test=None, setup="", prelude=True):
+    return json.dumps(execute(code, test, setup, prelude))

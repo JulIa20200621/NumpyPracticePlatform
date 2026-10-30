@@ -5,7 +5,9 @@ import { renderMarkdown } from "../markdown";
 import { renderOutcome } from "../output";
 import { runner } from "../runner";
 
-const STARTER = "# numpy is already imported as np\n\n";
+function starterCode(prelude: boolean): string {
+  return prelude ? "# numpy is already imported as np\n\n" : "";
+}
 
 export function renderProblem(root: HTMLElement, id: number): () => void {
   const ex = getExercise(id);
@@ -52,14 +54,14 @@ export function renderProblem(root: HTMLElement, id: number): () => void {
       runner.status.state === "loading"
         ? `<p class="out-note">Waiting for Python to load…</p>`
         : `<p class="out-note">Running…</p>`;
-    const outcome = await runner.run({ code: editor.state.doc.toString() });
+    const outcome = await runner.run({ code: editor.state.doc.toString(), prelude: ex.prelude });
     output.innerHTML = renderOutcome(outcome);
     busy = false;
     runBtn.disabled = false;
   };
 
   const editor: EditorView = createEditor(root.querySelector(".editor-host")!, {
-    doc: STARTER,
+    doc: starterCode(ex.prelude),
     dark: document.documentElement.dataset.theme === "dark",
     onRun: run,
   });

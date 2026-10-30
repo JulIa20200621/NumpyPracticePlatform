@@ -8,6 +8,8 @@ export interface Exercise {
   solution: string;
   difficulty: 1 | 2 | 3;
   tags: string[];
+  /** false: numpy is not pre-imported (exercise 1 asks you to import it). */
+  prelude: boolean;
 }
 
 export const exercises = raw as Exercise[];

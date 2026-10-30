@@ -8,7 +8,7 @@ import re
 import sys
 from pathlib import Path
 
-from exercise_meta import DIFFICULTY_OVERRIDES, TAGS
+from exercise_meta import DIFFICULTY_OVERRIDES, NO_PRELUDE, TAGS
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "third_party" / "numpy-100" / "exercises.ktx"
@@ -57,10 +57,11 @@ def main() -> None:
                 "solution": entries[f"a{n}"],
                 "difficulty": difficulty,
                 "tags": TAGS[n],
+                "prelude": n not in NO_PRELUDE,
             }
         )
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(exercises, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    OUT.write_text(json.dumps(exercises, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Wrote {len(exercises)} exercises to {OUT.relative_to(ROOT)}")
 
 

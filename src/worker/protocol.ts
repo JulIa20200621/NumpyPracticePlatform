@@ -3,6 +3,8 @@ export interface RunRequest {
   code: string;
   test?: string;
   setup?: string;
+  /** Run `import numpy as np` before the student's code (default true). */
+  prelude?: boolean;
 }
 
 export interface RunResult {

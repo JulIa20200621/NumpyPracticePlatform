@@ -37,11 +37,11 @@ const ready = init().then(
 );
 
 self.onmessage = async (e: MessageEvent<RunRequest>) => {
-  const { id, code, test, setup } = e.data;
+  const { id, code, test, setup, prelude } = e.data;
   const executeJson = await ready;
   try {
     // Pass undefined, not null: Pyodide converts undefined to None but null to a JS-null object.
-    const result = JSON.parse(executeJson(code, test ?? undefined, setup ?? ""));
+    const result = JSON.parse(executeJson(code, test ?? undefined, setup ?? "", prelude ?? true));
     post({ type: "result", id, result });
   } catch (err) {
     post({ type: "result", id, result: { stdout: "", value: null, error: String(err), passed: null, message: null } });
