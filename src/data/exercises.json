@@ -8,7 +8,8 @@
     "difficulty": 1,
     "tags": [
       "basics"
-    ]
+    ],
+    "prelude": false
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "difficulty": 1,
     "tags": [
       "basics"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "difficulty": 1,
     "tags": [
       "create"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 4,
@@ -42,7 +45,8 @@
     "tags": [
       "basics",
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 5,
@@ -53,7 +57,8 @@
     "difficulty": 1,
     "tags": [
       "basics"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 6,
@@ -65,7 +70,8 @@
     "tags": [
       "create",
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 7,
@@ -76,7 +82,8 @@
     "difficulty": 1,
     "tags": [
       "create"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 8,
@@ -87,7 +94,8 @@
     "difficulty": 1,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 9,
@@ -99,7 +107,8 @@
     "tags": [
       "create",
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 10,
@@ -110,7 +119,8 @@
     "difficulty": 1,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 11,
@@ -122,7 +132,8 @@
     "tags": [
       "create",
       "linear-algebra"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 12,
@@ -134,7 +145,8 @@
     "tags": [
       "create",
       "random"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 13,
@@ -146,7 +158,8 @@
     "tags": [
       "random",
       "sort-argmax"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 14,
@@ -157,7 +170,8 @@
     "difficulty": 1,
     "tags": [
       "random"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 15,
@@ -169,7 +183,8 @@
     "tags": [
       "create",
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 16,
@@ -180,7 +195,8 @@
     "difficulty": 1,
     "tags": [
       "create"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 17,
@@ -191,7 +207,8 @@
     "difficulty": 1,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 18,
@@ -203,7 +220,8 @@
     "tags": [
       "create",
       "linear-algebra"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 19,
@@ -215,7 +233,8 @@
     "tags": [
       "create",
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 20,
@@ -226,7 +245,8 @@
     "difficulty": 1,
     "tags": [
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 21,
@@ -237,7 +257,8 @@
     "difficulty": 1,
     "tags": [
       "create"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 22,
@@ -249,7 +270,8 @@
     "tags": [
       "random",
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 23,
@@ -260,7 +282,8 @@
     "difficulty": 1,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 24,
@@ -271,7 +294,8 @@
     "difficulty": 1,
     "tags": [
       "linear-algebra"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 25,
@@ -282,7 +306,8 @@
     "difficulty": 1,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 26,
@@ -293,7 +318,8 @@
     "difficulty": 1,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 27,
@@ -304,7 +330,8 @@
     "difficulty": 1,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 28,
@@ -316,7 +343,8 @@
     "tags": [
       "dtype",
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 29,
@@ -327,7 +355,8 @@
     "difficulty": 1,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 30,
@@ -338,7 +367,8 @@
     "difficulty": 1,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 31,
@@ -349,7 +379,8 @@
     "difficulty": 1,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 32,
@@ -360,7 +391,8 @@
     "difficulty": 1,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 33,
@@ -371,7 +403,8 @@
     "difficulty": 1,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 34,
@@ -382,7 +415,8 @@
     "difficulty": 2,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 35,
@@ -393,7 +427,8 @@
     "difficulty": 2,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 36,
@@ -405,7 +440,8 @@
     "tags": [
       "dtype",
       "random"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 37,
@@ -417,7 +453,8 @@
     "tags": [
       "create",
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 38,
@@ -428,7 +465,8 @@
     "difficulty": 1,
     "tags": [
       "create"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 39,
@@ -439,7 +477,8 @@
     "difficulty": 2,
     "tags": [
       "create"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 40,
@@ -451,7 +490,8 @@
     "tags": [
       "random",
       "sort-argmax"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 41,
@@ -462,7 +502,8 @@
     "difficulty": 2,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 42,
@@ -474,7 +515,8 @@
     "tags": [
       "random",
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 43,
@@ -485,7 +527,8 @@
     "difficulty": 2,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 44,
@@ -497,7 +540,8 @@
     "tags": [
       "random",
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 45,
@@ -509,7 +553,8 @@
     "tags": [
       "random",
       "sort-argmax"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 46,
@@ -521,7 +566,8 @@
     "tags": [
       "dtype",
       "create"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 47,
@@ -532,7 +578,8 @@
     "difficulty": 2,
     "tags": [
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 48,
@@ -543,7 +590,8 @@
     "difficulty": 2,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 49,
@@ -554,7 +602,8 @@
     "difficulty": 2,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 50,
@@ -565,7 +614,8 @@
     "difficulty": 2,
     "tags": [
       "sort-argmax"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 51,
@@ -576,7 +626,8 @@
     "difficulty": 2,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 52,
@@ -588,7 +639,8 @@
     "tags": [
       "random",
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 53,
@@ -599,7 +651,8 @@
     "difficulty": 2,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 54,
@@ -610,7 +663,8 @@
     "difficulty": 2,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 55,
@@ -621,7 +675,8 @@
     "difficulty": 2,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 56,
@@ -633,7 +688,8 @@
     "tags": [
       "create",
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 57,
@@ -645,7 +701,8 @@
     "tags": [
       "random",
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 58,
@@ -657,7 +714,8 @@
     "tags": [
       "axis",
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 59,
@@ -669,7 +727,8 @@
     "tags": [
       "sort-argmax",
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 60,
@@ -680,7 +739,8 @@
     "difficulty": 2,
     "tags": [
       "axis"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 61,
@@ -691,7 +751,8 @@
     "difficulty": 2,
     "tags": [
       "sort-argmax"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 62,
@@ -702,7 +763,8 @@
     "difficulty": 2,
     "tags": [
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 63,
@@ -713,7 +775,8 @@
     "difficulty": 2,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 64,
@@ -724,7 +787,8 @@
     "difficulty": 3,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 65,
@@ -735,7 +799,8 @@
     "difficulty": 3,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 66,
@@ -747,7 +812,8 @@
     "tags": [
       "dtype",
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 67,
@@ -759,7 +825,8 @@
     "tags": [
       "axis",
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 68,
@@ -770,7 +837,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 69,
@@ -781,7 +849,8 @@
     "difficulty": 3,
     "tags": [
       "linear-algebra"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 70,
@@ -792,7 +861,8 @@
     "difficulty": 3,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 71,
@@ -803,7 +873,8 @@
     "difficulty": 3,
     "tags": [
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 72,
@@ -814,7 +885,8 @@
     "difficulty": 3,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 73,
@@ -826,7 +898,8 @@
     "tags": [
       "shape",
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 74,
@@ -837,7 +910,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 75,
@@ -848,7 +922,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 76,
@@ -859,7 +934,8 @@
     "difficulty": 3,
     "tags": [
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 77,
@@ -870,7 +946,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 78,
@@ -881,7 +958,8 @@
     "difficulty": 3,
     "tags": [
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 79,
@@ -892,7 +970,8 @@
     "difficulty": 3,
     "tags": [
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 80,
@@ -903,7 +982,8 @@
     "difficulty": 3,
     "tags": [
       "index-slice"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 81,
@@ -914,7 +994,8 @@
     "difficulty": 3,
     "tags": [
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 82,
@@ -925,7 +1006,8 @@
     "difficulty": 3,
     "tags": [
       "linear-algebra"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 83,
@@ -936,7 +1018,8 @@
     "difficulty": 3,
     "tags": [
       "sort-argmax"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 84,
@@ -947,7 +1030,8 @@
     "difficulty": 3,
     "tags": [
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 85,
@@ -958,7 +1042,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 86,
@@ -969,7 +1054,8 @@
     "difficulty": 3,
     "tags": [
       "linear-algebra"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 87,
@@ -981,7 +1067,8 @@
     "tags": [
       "shape",
       "axis"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 88,
@@ -992,7 +1079,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 89,
@@ -1003,7 +1091,8 @@
     "difficulty": 3,
     "tags": [
       "sort-argmax"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 90,
@@ -1014,7 +1103,8 @@
     "difficulty": 3,
     "tags": [
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 91,
@@ -1025,7 +1115,8 @@
     "difficulty": 3,
     "tags": [
       "dtype"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 92,
@@ -1036,7 +1127,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 93,
@@ -1048,7 +1140,8 @@
     "tags": [
       "broadcasting",
       "axis"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 94,
@@ -1059,7 +1152,8 @@
     "difficulty": 3,
     "tags": [
       "axis"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 95,
@@ -1071,7 +1165,8 @@
     "tags": [
       "dtype",
       "broadcasting"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 96,
@@ -1082,7 +1177,8 @@
     "difficulty": 3,
     "tags": [
       "shape"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 97,
@@ -1093,7 +1189,8 @@
     "difficulty": 3,
     "tags": [
       "linear-algebra"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 98,
@@ -1104,7 +1201,8 @@
     "difficulty": 3,
     "tags": [
       "misc"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 99,
@@ -1115,7 +1213,8 @@
     "difficulty": 3,
     "tags": [
       "axis"
-    ]
+    ],
+    "prelude": true
   },
   {
     "id": 100,
@@ -1126,6 +1225,7 @@
     "difficulty": 3,
     "tags": [
       "random"
-    ]
+    ],
+    "prelude": true
   }
 ]

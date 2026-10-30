@@ -107,6 +107,10 @@ TAGS = {
     100: ["random"],
 }
 
+# Exercises where `import numpy as np` must NOT run before the student's code
+# (the exercise is to write that import).
+NO_PRELUDE = {1}
+
 # Questions 53, 83 and 93 have no stars in exercises.ktx.
 DIFFICULTY_OVERRIDES = {
     53: 2,

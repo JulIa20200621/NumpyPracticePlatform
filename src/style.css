@@ -158,13 +158,194 @@ pre.code-block {
   color: var(--muted);
 }
 
+.spacer {
+  flex: 1;
+}
+
+/* Python status pill */
+.py-status {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.py-status::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  background: var(--muted);
+  vertical-align: 0.05rem;
+}
+.py-loading::before,
+.py-running::before {
+  background: var(--medium);
+  animation: pulse 1s infinite alternate;
+}
+.py-ready::before {
+  background: var(--easy);
+}
+.py-error::before {
+  background: var(--hard);
+}
+@keyframes pulse {
+  to {
+    opacity: 0.3;
+  }
+}
+
+/* Problem page: split view */
 .problem-page {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  height: calc(100vh - 7.5rem);
+  min-height: 520px;
+}
+.pane {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-height: 0;
+}
+.pane-left {
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+}
+.pane-left h1 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0 0.75rem;
+}
+.pane-right {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.problem-nav {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+.question {
+  font-size: 1rem;
+}
+.tags {
+  margin-top: 0.75rem;
+}
+
+.editor-host {
+  flex: 1 1 55%;
+  min-height: 160px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.editor-host .cm-editor {
+  height: 100%;
+  font-size: 14px;
+}
+.editor-host .cm-editor.cm-focused {
+  outline: none;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.kbd-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.btn {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.btn-primary {
+  background: var(--easy);
+  border-color: var(--easy);
+  color: #fff;
+}
+
+.output {
+  flex: 1 1 45%;
+  overflow-y: auto;
+  padding: 0.5rem 0.9rem;
+}
+.out-block pre {
+  margin: 0 0 0.6rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--code-bg);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.out-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0.4rem 0 0.2rem;
+}
+.out-error pre {
+  color: var(--hard);
+}
+.out-note,
+.out-time {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.out-time {
+  text-align: right;
+  margin: 0;
+  font-size: 0.78rem;
+}
+.verdict {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0.3rem 0;
+}
+.verdict-pass {
+  color: var(--easy);
+}
+.verdict-fail {
+  color: var(--hard);
+}
+.out-message {
+  margin: 0.2rem 0 0.6rem;
+}
+
+@media (max-width: 800px) {
+  .problem-page {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .pane-right {
+    min-height: 600px;
+  }
 }
 
 .notice {
   padding: 2rem;
   text-align: center;
+}
+
+.problem-table td:last-child {
+  white-space: nowrap;
 }
